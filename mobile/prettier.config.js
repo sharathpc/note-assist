@@ -1,0 +1,23 @@
+export default {
+  endOfLine: 'lf',
+  semi: true,
+  singleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'es5',
+  plugins: ['@ianvs/prettier-plugin-sort-imports'],
+  importOrder: [
+    '^(react/(.*)$)|^(react$)',
+    '',
+    '<THIRD_PARTY_MODULES>',
+    '',
+    '<TYPES>',
+    '',
+    '<TYPES>^[@~]/(?!$).*$',
+    '',
+    '^[@~]/.*$',
+    '',
+    '^[./]',
+  ],
+  experimentalTernaries: true,
+  importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
+};
