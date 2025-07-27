@@ -40,14 +40,14 @@ const Register = () => {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      firstname: '',
-      lastname: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
     },
     validationSchema: Yup.object().shape({
-      firstname: Yup.string().required('First name is required'),
-      lastname: Yup.string().required('Last name is required'),
+      firstName: Yup.string().required('First name is required'),
+      lastName: Yup.string().required('Last name is required'),
       email: Yup.string()
         .required('Email is required')
         .email('Invalid email address'),
@@ -80,7 +80,7 @@ const Register = () => {
       </VStack>
       <VStack space="lg" className="p-4 w-full">
         <FormControl
-          isInvalid={!!errors.firstname && touched.firstname}
+          isInvalid={!!errors.firstName && touched.firstName}
           isDisabled={isSubmitting}
         >
           <FormControlLabel>
@@ -90,20 +90,20 @@ const Register = () => {
             <InputField
               type="text"
               placeholder="Enter first name"
-              value={values.firstname}
-              onChangeText={handleChange('firstname')}
-              onBlur={handleBlur('firstname')}
+              value={values.firstName}
+              onChangeText={handleChange('firstName')}
+              onBlur={handleBlur('firstName')}
             />
           </Input>
           <FormControlError>
             <FormControlErrorIcon size="xs" as={AlertCircleIcon} />
             <FormControlErrorText size="xs">
-              {errors.firstname}
+              {errors.firstName}
             </FormControlErrorText>
           </FormControlError>
         </FormControl>
         <FormControl
-          isInvalid={!!errors.lastname && touched.lastname}
+          isInvalid={!!errors.lastName && touched.lastName}
           isDisabled={isSubmitting}
         >
           <FormControlLabel>
@@ -113,15 +113,15 @@ const Register = () => {
             <InputField
               type="text"
               placeholder="Enter last name"
-              value={values.lastname}
-              onChangeText={handleChange('lastname')}
-              onBlur={handleBlur('lastname')}
+              value={values.lastName}
+              onChangeText={handleChange('lastName')}
+              onBlur={handleBlur('lastName')}
             />
           </Input>
           <FormControlError>
             <FormControlErrorIcon size="xs" as={AlertCircleIcon} />
             <FormControlErrorText size="xs">
-              {errors.lastname}
+              {errors.lastName}
             </FormControlErrorText>
           </FormControlError>
         </FormControl>

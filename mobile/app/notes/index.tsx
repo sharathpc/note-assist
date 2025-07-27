@@ -110,7 +110,7 @@ const Notes = () => {
                   <HStack className="justify-between" space="sm">
                     <Heading size="sm">{item.title}</Heading>
                     <Text size="sm" className="font-medium">
-                      {DateTime.fromISO(item.createdAt).toFormat('D')}
+                      {DateTime.fromMillis(item.createdAt).toFormat('D')}
                     </Text>
                   </HStack>
                   <Text size="sm">{item.content}</Text>

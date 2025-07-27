@@ -17,8 +17,8 @@ export const login = async (payload: {
 };
 
 export const register = async (payload: {
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
 }): Promise<IUser> => {

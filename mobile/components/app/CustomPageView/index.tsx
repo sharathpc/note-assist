@@ -8,6 +8,7 @@ import { Heading } from '@/components/ui/heading';
 import { HStack } from '@/components/ui/hstack';
 import { Icon } from '@/components/ui/icon';
 import { Pressable } from '@/components/ui/pressable';
+import { Spinner } from '@/components/ui/spinner';
 
 interface Props {
   title: string;
@@ -15,6 +16,7 @@ interface Props {
   footer?: ReactNode;
   action?: ReactNode;
   isHeroPage?: boolean;
+  loading?: boolean;
 }
 
 export const CustomPageView = ({
@@ -23,6 +25,7 @@ export const CustomPageView = ({
   footer,
   action,
   isHeroPage = false,
+  loading = false,
 }: Props) => {
   const router = useRouter();
 
@@ -45,8 +48,15 @@ export const CustomPageView = ({
         </HStack>
         {action}
       </View>
-      {children}
-      {footer}
+      {loading ?
+        <View className="flex-1 justify-center items-center">
+          <Spinner size="small" />
+        </View>
+      : <>
+          {children}
+          {footer}
+        </>
+      }
     </View>
   );
 };

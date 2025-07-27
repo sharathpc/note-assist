@@ -1,80 +1,34 @@
-import * as dynamoose from "dynamoose";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { S3Client } from "@aws-sdk/client-s3";
+import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 
-dynamoose.aws.ddb.local("https://localhost.localstack.cloud:4566");
-
-const UsersSchema = new dynamoose.Schema(
-  {
-    userId: {
-      type: String,
-      hashKey: true,
-      default: () => crypto.randomUUID(),
-    },
-    firstname: {
-      type: String,
-      required: true,
-    },
-    lastname: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      index: {
-        name: "EmailIndex",
-        rangeKey: "userId",
-      },
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    summary: String,
-    pageCount: Number,
+const AWS_CONNECTION_DETAILS = {
+  region: "us-east-1",
+  endpoint: "https://localhost.localstack.cloud:4566",
+  credentials: {
+    accessKeyId: "test",
+    secretAccessKey: "test",
   },
-  {
-    timestamps: true,
-  }
-);
+};
 
-const NotesSchema = new dynamoose.Schema(
-  {
-    noteId: {
-      type: String,
-      hashKey: true,
-      default: () => crypto.randomUUID(),
-    },
-    userId: {
-      type: String,
-      required: true,
-      index: {
-        name: "UserIdIndex",
-        rangeKey: "noteId",
-      },
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    content: {
-      type: String,
-      required: true,
-    },
-    status: {
-      type: String,
-      required: true,
-    },
-    summary: String,
-    pageCount: Number,
-  },
-  {
-    timestamps: true,
-  }
-);
+const globalForAws = global as unknown as {
+  dynamodb: DynamoDBDocumentClient;
+  s3Client: S3Client;
+};
 
-const Users = dynamoose.model("Users", UsersSchema);
-const Notes = dynamoose.model("Notes", NotesSchema);
+const dynamodb =
+  globalForAws.dynamodb ||
+  DynamoDBDocumentClient.from(
+    new DynamoDBClient({ ...AWS_CONNECTION_DETAILS })
+  );
 
-const initializeAws = async () => {};
+const s3Client =
+  globalForAws.s3Client ||
+  new S3Client({ ...AWS_CONNECTION_DETAILS, forcePathStyle: true });
 
-export { initializeAws, Users, Notes };
+if (process.env.NODE_ENV !== "production") {
+  globalForAws.dynamodb = dynamodb;
+  globalForAws.s3Client = s3Client;
+}
+
+export { dynamodb, s3Client };

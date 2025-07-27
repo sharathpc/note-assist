@@ -1,0 +1,18 @@
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Terraform crash logs
+crash.log
+
+# Terraform temporary directory
+.terraform/
+
+# Terraform plan files
+*.tfplan
+
+# Terraform lock file (optional, depending on workflow)
+.terraform.lock.hcl
+
+# localstack data
+.localstack/

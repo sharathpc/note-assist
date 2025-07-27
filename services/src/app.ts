@@ -3,7 +3,6 @@ import express from 'express';
 
 //import { initializeAgent } from './agent';
 import { setRoutes } from './routes/index';
-import { initializeAws } from './aws';
 
 dotenv.config();
 
@@ -12,7 +11,6 @@ const PORT = process.env.PORT || 3000;
 
 const startServer = async () => {
   try {
-    await initializeAws();
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     setRoutes(app);

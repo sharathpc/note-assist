@@ -4,6 +4,7 @@ export interface INote {
   title: string;
   content: string;
   status: string;
-  createdAt: string;
-  updatedAt: string;
+  imageUrl: string | null;
+  createdAt: number;
+  updatedAt: number;
 }
