@@ -11,3 +11,17 @@ services:
     volumes:
       - ./.localstack:/var/lib/localstack
       - /var/run/docker.sock:/var/run/docker.sock
+
+  api:
+    build:
+      context: ./services
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./services/.env
+    depends_on:
+      - localstack
+    volumes:
+      - ./services:/app
+      - /app/node_modules
