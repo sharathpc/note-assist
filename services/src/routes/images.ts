@@ -14,7 +14,6 @@ router.post(
   upload.single("image"),
   async (req: Request, res: Response) => {
     try {
-      console.log(req.file, req.body);
       const response = await s3Client.send(
         new PutObjectCommand({
           Bucket: BUCKETS.IMAGES,
@@ -32,7 +31,6 @@ router.post(
         res.status(500).json({ message: "Image upload failed" });
       }
     } catch (error) {
-      console.log(error);
       res.status(500).json({ message: "Image upload failed", error });
     }
   }

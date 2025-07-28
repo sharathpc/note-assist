@@ -32,7 +32,6 @@ export const ImagePicker = ({ loading = false, value, onChange }: Props) => {
     });
 
     if (!result.canceled) {
-      console.log(result.assets[0]);
       setImageUri(result.assets[0].uri);
     }
   };
