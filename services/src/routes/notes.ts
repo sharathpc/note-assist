@@ -31,7 +31,7 @@ router.get("/", async (req: Request, res: Response) => {
     );
     res.json(response.Items);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching notes", error });
+    res.status(500).json({ message: "Error fetching notes", error: error.message });
   }
 });
 
@@ -53,7 +53,7 @@ router.get("/:noteId", async (req: Request, res: Response) => {
     );
     res.json(response.Items[0]);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching note", error });
+    res.status(500).json({ message: "Error fetching note", error: error.message });
   }
 });
 
@@ -80,7 +80,7 @@ router.post("/", async (req: Request, res: Response) => {
       res.status(500).json({ message: "Note creation failed" });
     }
   } catch (error) {
-    res.status(500).json({ message: "Note creation failed", error });
+    res.status(500).json({ message: "Note creation failed", error: error.message });
   }
 });
 
@@ -122,7 +122,7 @@ router.put("/:noteId", async (req: Request, res: Response) => {
       res.status(500).json({ message: "Note creation failed" });
     }
   } catch (error) {
-    res.status(500).json({ message: "Note creation failed", error });
+    res.status(500).json({ message: "Note creation failed", error: error.message });
   }
 });
 
@@ -143,7 +143,7 @@ router.delete("/:noteId", async (req: Request, res: Response) => {
       res.status(500).json({ message: "Note deletion failed" });
     }
   } catch (error) {
-    res.status(500).json({ message: "Note deletion failed", error });
+    res.status(500).json({ message: "Note deletion failed", error: error.message });
   }
 });
 

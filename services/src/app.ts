@@ -1,10 +1,7 @@
-import dotenv from 'dotenv';
+import 'dotenv/config'
+
 import express from 'express';
-
-//import { initializeAgent } from './agent';
 import { setRoutes } from './routes/index';
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;

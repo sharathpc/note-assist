@@ -31,7 +31,7 @@ router.post(
         res.status(500).json({ message: "Image upload failed" });
       }
     } catch (error) {
-      res.status(500).json({ message: "Image upload failed", error });
+      res.status(500).json({ message: "Image upload failed", error: error.message });
     }
   }
 );

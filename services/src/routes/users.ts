@@ -30,7 +30,7 @@ router.post("/login", async (req: Request, res: Response) => {
       res.status(401).json({ message: "Invalid credentials" });
     }
   } catch (error) {
-    res.status(500).json({ message: "User login failed", error });
+    res.status(500).json({ message: "User login failed", error: error.message });
   }
 });
 
@@ -93,7 +93,7 @@ router.post("/update", async (req: Request, res: Response) => {
       res.status(500).json({ message: "Note creation failed" });
     }
   } catch (error) {
-    res.status(500).json({ message: "Note creation failed", error });
+    res.status(500).json({ message: "Note creation failed", error: error.message });
   }
 });
 
