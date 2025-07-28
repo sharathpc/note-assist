@@ -25,7 +25,7 @@ router.post(
 
       if (response.$metadata.httpStatusCode === 200) {
         res.json({
-          url: `https://${BUCKETS.IMAGES}.s3.localhost.localstack.cloud:4566/${req.file.originalname}`,
+          url: `https://${BUCKETS.IMAGES}.s3.${process.env.AWS_HOST}/${req.file.originalname}`,
         });
       } else {
         res.status(500).json({ message: "Image upload failed" });

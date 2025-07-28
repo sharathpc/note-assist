@@ -4,7 +4,7 @@ import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 
 const AWS_CONNECTION_DETAILS = {
   region: "us-east-1",
-  endpoint: "https://localhost.localstack.cloud:4566",
+  endpoint: `https://${process.env.AWS_HOST}`,
   credentials: {
     accessKeyId: "test",
     secretAccessKey: "test",
