@@ -50,12 +50,12 @@ data "archive_file" "lambda_deployment_package" {
   output_path = "/tmp/lambda_function.zip"
 
   source {
-    content  = file("${path.root}/lambda/index.js")
+    content  = file("${path.root}/../lambda/index.js")
     filename = "index.js"
   }
 
   source {
-    content  = file("${path.root}/lambda/package.json")
+    content  = file("${path.root}/../lambda/package.json")
     filename = "package.json"
   }
 }

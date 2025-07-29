@@ -14,5 +14,8 @@ crash.log
 # Terraform lock file (optional, depending on workflow)
 .terraform.lock.hcl
 
+# Terraform keys
+keys/
+
 # localstack data
 .localstack/

@@ -14,7 +14,7 @@ terraform {
 provider "aws" {
   access_key                  = "mock_access_key"
   secret_key                  = "mock_secret_key"
-  region                      = "us-east-1"
+  region                      = var.aws_region
 
   s3_use_path_style           = true
   skip_credentials_validation = true
@@ -22,13 +22,12 @@ provider "aws" {
   skip_requesting_account_id  = true
 
   endpoints {
-    iam        = "http://localhost:4566"
-    ec2        = "http://localhost:4566"
-    dynamodb   = "http://localhost:4566"
-    s3         = "http://s3.localhost.localstack.cloud:4566"
-    lambda     = "http://localhost:4566"
-    sns        = "http://localhost:4566"
-    logs       = "http://localhost:4566"
-    cloudwatch = "http://localhost:4566"
+    iam        = var.localstack_url
+    dynamodb   = var.localstack_url
+    s3         = var.localstack_s3_url
+    lambda     = var.localstack_url
+    sns        = var.localstack_url
+    logs       = var.localstack_url
+    cloudwatch = var.localstack_url
   }
 }

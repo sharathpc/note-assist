@@ -5,7 +5,7 @@ services:
       - "4510-4559:4510-4559"
       - "4566:4566"
     environment:
-      - SERVICES=iam,ec2,dynamodb,s3,lambda,sns,cloudwatch,logs
+      - SERVICES=iam,dynamodb,s3,lambda,sns,cloudwatch,logs
       - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
       - ./.localstack:/var/lib/localstack
