@@ -3,11 +3,11 @@ import { S3Client } from "@aws-sdk/client-s3";
 import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 
 const AWS_CONNECTION_DETAILS = {
-  region: "us-east-1",
-  endpoint: `http://${process.env.AWS_HOST}`,
+  region: process.env.AWS_REGION,
+  endpoint: process.env.AWS_HOST,
   credentials: {
-    accessKeyId: "test",
-    secretAccessKey: "test",
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   },
 };
 
