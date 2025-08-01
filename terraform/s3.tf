@@ -1,5 +1,6 @@
 resource "aws_s3_bucket" "ns_bucket" {
-  bucket = "ns-images-bucket"
+  bucket        = "ns-images-bucket"
+  force_destroy = true
 
   tags = {
     Name        = "Note Assist S3 Images Bucket"
